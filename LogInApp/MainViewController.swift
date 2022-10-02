@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var usernameButton: UIButton!
     @IBOutlet var passwordButton: UIButton!
@@ -18,13 +18,25 @@ class LoginViewController: UIViewController {
     private let userName = "User"
     private let password = "Password"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
         welcomeVC.username = userName
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case userTF:
+            passwordTF.becomeFirstResponder()
+        default:
+            passwordTF.resignFirstResponder()
+            logInButtonPressed()
+        }
+        return true
     }
     
     @IBAction func forgotButton(_ sender: UIButton) {
@@ -38,6 +50,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func logInButtonPressed() {
         if userTF.text == userName, passwordTF.text == password {
+            performSegue(withIdentifier: "LogIn", sender: self)
         } else {
             showAlert(withTitle: "Error", andMessage: "Wrong username or password")
         }
@@ -55,6 +68,7 @@ extension LoginViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
             self.passwordTF.text = ""
+            //self.textField.becomeFirstResponder()
         }
         alert.addAction(okAction)
         present(alert, animated: true)
