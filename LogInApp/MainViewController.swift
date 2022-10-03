@@ -26,17 +26,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func forgotButton(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            showAlert(withTitle: "Oops", andMessage: "Your username is User 😉", forTextField: nil)
-        default:
-            showAlert(withTitle: "Oops", andMessage: "Your password is Password 😉", forTextField: nil)
-        }
+        sender.tag == 0
+        ? showAlert(withTitle: "Oops", andMessage: "Your username is \(userName) 😉")
+        : showAlert(withTitle: "Oops", andMessage: "Your password is \(password) 😉")
     }
     
     @IBAction func logInButtonPressed() {
         if userTF.text == userName, passwordTF.text == password {
-            performSegue(withIdentifier: "LogIn", sender: self)
+            performSegue(withIdentifier: "showWelcomeVC", sender: nil)
         } else {
             showAlert(withTitle: "Invalid login or password",
                       andMessage: "Please, enter correct login and password",
@@ -52,7 +49,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
 extension LoginViewController {
     
-    private func showAlert(withTitle title: String, andMessage message: String, forTextField textField: UITextField?) {
+    private func showAlert(withTitle title: String, andMessage message: String, forTextField textField: UITextField? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
             self.passwordTF.text = ""
