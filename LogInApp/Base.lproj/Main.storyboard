@@ -91,10 +91,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="passwordButton" destination="d3x-fz-bMC" id="JS8-9N-6Rr"/>
                         <outlet property="passwordTF" destination="216-at-XZF" id="Pk6-BI-8bc"/>
                         <outlet property="userTF" destination="snO-Yq-MC8" id="vQb-Ne-Q8a"/>
-                        <outlet property="usernameButton" destination="oYk-Mp-jnY" id="1P3-94-ycG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

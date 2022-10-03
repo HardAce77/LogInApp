@@ -9,9 +9,6 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var usernameButton: UIButton!
-    @IBOutlet var passwordButton: UIButton!
-    
     @IBOutlet var userTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
@@ -25,18 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        self.view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case userTF:
-            passwordTF.becomeFirstResponder()
-        default:
-            passwordTF.resignFirstResponder()
-            logInButtonPressed()
-        }
-        return true
+        view.endEditing(true)
     }
     
     @IBAction func forgotButton(_ sender: UIButton) {
@@ -52,7 +38,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if userTF.text == userName, passwordTF.text == password {
             performSegue(withIdentifier: "LogIn", sender: self)
         } else {
-            showAlert(withTitle: "Invalid login or password", andMessage: "Please, enter correct login and password", forTextField: passwordTF)
+            showAlert(withTitle: "Invalid login or password",
+                      andMessage: "Please, enter correct login and password",
+                      forTextField: passwordTF)
         }
     }
     
@@ -72,5 +60,16 @@ extension LoginViewController {
         }
         alert.addAction(okAction)
         present(alert, animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case userTF:
+            passwordTF.becomeFirstResponder()
+        default:
+            passwordTF.resignFirstResponder()
+            logInButtonPressed()
+        }
+        return true
     }
 }

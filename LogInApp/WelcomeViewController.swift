@@ -9,9 +9,9 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    var username: String!
-    
     @IBOutlet var welcomeLabel: UILabel!
+    
+    var username: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,6 @@ class WelcomeViewController: UIViewController {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
         gradientLayer.colors = [UIColor.red.cgColor, UIColor.blue.cgColor]
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
