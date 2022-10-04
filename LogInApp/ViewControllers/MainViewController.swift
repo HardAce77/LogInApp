@@ -12,12 +12,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
-    private let userName = "User"
-    private let password = "Password"
+    private let user = User.getUser()
+    
+    override func viewDidLoad() {
+        userTF.text = "User"
+        passwordTF.text = "Password"
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.username = userName
+        guard let tabBarVC = segue.destination as? TabBarViewController else { return }
+        guard let viewControllers = tabBarVC.viewControllers else { return }
+        
+        viewControllers.forEach { viewController in
+            if let welcomeVC = viewController as? WelcomeViewController {
+                welcomeVC.username = user.person.firstName
+            } else if let navigationVC = viewController as? UINavigationController {
+                guard let userVC = navigationVC.topViewController as? UserViewController else { return }
+                userVC.person = user.person
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -27,12 +40,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func forgotButton(_ sender: UIButton) {
         sender.tag == 0
-        ? showAlert(withTitle: "Oops", andMessage: "Your username is \(userName) 😉")
-        : showAlert(withTitle: "Oops", andMessage: "Your password is \(password) 😉")
+        ? showAlert(withTitle: "Oops", andMessage: "Your username is \(user.username) 😉")
+        : showAlert(withTitle: "Oops", andMessage: "Your password is \(user.password) 😉")
     }
     
     @IBAction func logInButtonPressed() {
-        if userTF.text == userName, passwordTF.text == password {
+        if userTF.text == user.username, passwordTF.text == user.password {
             performSegue(withIdentifier: "showWelcomeVC", sender: nil)
         } else {
             showAlert(withTitle: "Invalid login or password",
