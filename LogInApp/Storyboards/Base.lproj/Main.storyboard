@@ -267,21 +267,21 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bio" translatesAutoresizingMaskIntoConstraints="NO" id="VoR-bV-KxK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VoR-bV-KxK">
                                 <rect key="frame" x="85" y="92.5" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="VoR-bV-KxK" secondAttribute="height" multiplier="1:1" id="K8c-gB-aGH"/>
+                                    <constraint firstAttribute="width" secondItem="VoR-bV-KxK" secondAttribute="height" multiplier="1:1" id="bIB-gJ-yda"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vrW-LG-vCW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VoR-bV-KxK" firstAttribute="top" secondItem="vrW-LG-vCW" secondAttribute="top" id="30s-s5-EQS"/>
-                            <constraint firstItem="VoR-bV-KxK" firstAttribute="centerX" secondItem="aIE-a4-S3c" secondAttribute="centerX" id="L7G-h1-655"/>
+                            <constraint firstItem="0i9-NM-5GK" firstAttribute="top" secondItem="VoR-bV-KxK" secondAttribute="bottom" constant="20" id="5MY-gW-Kus"/>
+                            <constraint firstItem="VoR-bV-KxK" firstAttribute="height" secondItem="aIE-a4-S3c" secondAttribute="height" multiplier="0.263957" id="Qru-wp-90f"/>
+                            <constraint firstItem="VoR-bV-KxK" firstAttribute="top" secondItem="vrW-LG-vCW" secondAttribute="top" id="fLK-6B-jSn"/>
                             <constraint firstItem="vrW-LG-vCW" firstAttribute="trailing" secondItem="0i9-NM-5GK" secondAttribute="trailing" constant="16" id="lg2-X7-tc5"/>
-                            <constraint firstItem="VoR-bV-KxK" firstAttribute="height" secondItem="aIE-a4-S3c" secondAttribute="height" multiplier="0.264085" id="oLj-7n-OKs"/>
-                            <constraint firstItem="0i9-NM-5GK" firstAttribute="top" secondItem="VoR-bV-KxK" secondAttribute="bottom" constant="20" id="ovv-Bf-tMF"/>
+                            <constraint firstItem="VoR-bV-KxK" firstAttribute="centerX" secondItem="aIE-a4-S3c" secondAttribute="centerX" id="tZ2-2Z-HWz"/>
                             <constraint firstItem="0i9-NM-5GK" firstAttribute="leading" secondItem="vrW-LG-vCW" secondAttribute="leading" constant="16" id="tZA-ps-2G8"/>
                         </constraints>
                     </view>
@@ -377,7 +377,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bio" width="788" height="788"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

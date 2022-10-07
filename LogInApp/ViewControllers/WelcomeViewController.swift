@@ -31,8 +31,7 @@ extension UIView {
                            UIColor(red: 107/255,
                                    green: 148/255,
                                    blue: 230/255,
-                                   alpha: 1).cgColor
-        ]
+                                   alpha: 1).cgColor]
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)

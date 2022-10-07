@@ -15,8 +15,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let user = User.getUser()
     
     override func viewDidLoad() {
-        userTF.text = "User"
-        passwordTF.text = "Password"
+        super.viewDidLoad()
+        userTF.text = user.username
+        passwordTF.text = user.password
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,9 +59,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         userTF.text = ""
         passwordTF.text = ""
     }
-}
-
-extension LoginViewController {
     
     private func showAlert(withTitle title: String, andMessage message: String, forTextField textField: UITextField? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -71,6 +69,9 @@ extension LoginViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     }
+}
+
+extension LoginViewController {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {

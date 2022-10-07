@@ -19,10 +19,18 @@ class UserViewController: UIViewController {
         title = "\(person.firstName) \(person.secondName)"
         setup(labels: infoLabels)
         view.addGradient()
+        personPhoto.image = UIImage(named: person.photo)
+        print(personPhoto.frame.height)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        personPhoto.layer.cornerRadius = personPhoto.frame.width / 2
+        print(personPhoto.frame.height)
     }
     
     override func viewDidLayoutSubviews() {
-        personPhoto.layer.cornerRadius = personPhoto.layer.frame.width / 2
+        personPhoto.layer.cornerRadius = personPhoto.frame.width / 2
+        print(personPhoto.frame.height)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,7 +38,7 @@ class UserViewController: UIViewController {
         bioVC.bioInfo = person.bio
     }
     
-    func setup(labels: [UILabel]) {
+    private func setup(labels: [UILabel]) {
         labels.forEach { label in
             switch label.tag {
             case 0: label.text = person.firstName
